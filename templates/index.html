@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1>Paige's Movie Recommender</h1>
+        <form action="{{ url_for('about') }}">
+            <button type="submit" id="about_button">
+                <h1>
+                    <img class="paper_clip" src="../static/icons/paper-clip.svg" alt="Paper-Clip">
+                    About This Project
+                </h1>
+            </button>
+        </form>
+    </div>
+
+    <div class="search">
+        <img id="popcorn_left" class="popcorn_image" src="../static/images/popcorn.svg" alt="popcorn">
+        <div class="search_forms">
+            <form class="search_form" method="GET" action="{{ url_for('search') }}">
+                <label for="searchbox"></label>
+                <input type="text" id="searchbox" name="searchbox" required/>
+                <button type="submit" id="search_button">Search</button>
+            </form>
+            <form class="return_form" method="GET" action="{{ url_for('recommend') }}">
+                <input type="hidden" name="reset_search">
+                <button type="submit" id="return_button">Return to Recommendations</button>
+            </form>
+        </div>
+        <img id="popcorn_right" class="popcorn_image" src="../static/images/popcorn.svg" alt="popcorn">
+    </div>
+
+    {% if selected_movie %}
+    <div class="selected_movie">
+        <h2>Most Recent Selected Movie: {{selected_movie['title']}}</h2>
+    </div>
+    {% endif %}
+
+    {% if previous_movies %}
+    <div class="previous_selections">
+        <h2>Your previous selections:</h2>
+        <div>
+            {% for movie in previous_movies %}
+            <div class="previous_movie">
+                <h4 class="previous_movie_title">{{ movie['title'] }}</h4>
+                <form class="delete_form" method="GET" action="{{ url_for('recommend') }}">
+                    <input type="hidden" name="del_movie_id" value="{{ movie['movieId'] }}"/>
+                    <button type="submit" class="delete_button">
+                        <img class="cross_icon" src="../static/icons/cross.svg" alt="Delete">
+                    </button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div>
+        <div>
+            <div class="movies">
+            {% for index, movie in movies.iterrows() %}
+                <div class="movie">
+                    <h3 class="movie_title">{{ movie['title'] }}</h3>
+                    <h4 class="movie_genre">{{ movie['genres'] }}</h4>
+                    <img src="{{ movie['covers'] }}" alt="{{ movie['title'] }} poster." class="movie_poster"/>
+                    <p class="movie_rating">{{ movie['rating'] }}/10</p>
+                    <form class="select_form" method="GET" action="{{ url_for('recommend') }}">
+                        <input type="hidden" name="movie_id" value="{{ movie['movieId'] }}"/>
+                        <button type="submit" id="selected_movie" class="select_button">
+                            <img class="select_icon" src="../static/icons/movie-clapper.svg" alt="">
+                            Select
+                        </button>
+                    </form>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

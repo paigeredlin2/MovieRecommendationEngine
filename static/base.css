@@ -1,0 +1,215 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #d9cbc2;
+  margin: 0;
+}
+.jumbotron {
+  background-color: #f5f0e9;
+  margin: 0;
+  padding: 1rem;
+  font-family: "Winky Sans";
+  color: #550d08;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.paper_clip {
+    width: 25px;
+}
+#about_button{
+  border: 0;
+  border-bottom: 4px solid #550d08;
+  font-family: Roboto;
+  background-color: #f5f0e9;
+  text-align: center;
+}
+.popcorn_image {
+  display: none;
+  flex: 1 0 0;
+}
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.search_forms {
+  text-align: center;
+  margin: 1rem;
+  flex: 3 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#searchbox {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  border: 2px solid #7b1103;
+  border-radius: 6px;
+  font-size: larger;
+  font-family: "Winky Sans";
+  padding: 1rem;
+  margin-bottom: 4px;
+}
+#search_button {
+  display: block;
+  margin: 0 auto;
+  background-color: #550d08;
+  color: #f5f0e9;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: larger;
+  font-family: Roboto;
+  border: 2px solid #d9cbc2;
+}
+.return_form {
+  text-align: center;
+  margin-top: 10px;
+}
+#return_button {
+  background-color: #f5f0e9;
+  font-family: Roboto;
+  border: 0;
+  padding: 6px;
+  border-radius: 3px;
+  margin: 0 auto;
+}
+.selected_movie {
+  text-align: center;
+  font-family: "Winky Sans";
+}
+.previous_selections {
+  background-color: #550d08;
+  color: #f5f0e9;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem 1rem 5rem;
+  h2 {
+    font-family: "Winky Sans";
+  }
+}
+.previous_movie {
+  margin-bottom: 6px;
+}
+.previous_movie_title {
+  display: inline;
+  font-family: Roboto;
+  margin-bottom: 1rem;
+}
+.delete_form {
+  display: inline;
+}
+.delete_button {
+  display: inline;
+  background-color: #7b1103;
+  color: #f5f0e9;
+  border: 0;
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+.cross_icon {
+  width: 10px;
+}
+.movies {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 0;
+  min-width: 0;
+}
+.movie {
+  background-color: #f5f0e9;
+  margin: 1rem;
+  overflow: hidden;
+  min-width: 0;
+  border: 6px solid #000000;
+  padding: 4px;
+  display: grid;
+  grid-template-rows: 20% 20% 40% 10% 10%;
+}
+.movie_title {
+  font-family: Roboto;
+  text-align: center;
+}
+.movie_genre {
+  font-family: Roboto;
+  color: #550d08;
+  text-align: center;
+  overflow: hidden;
+}
+.movie_poster {
+  border: 2px solid #550d08;
+  margin: 0 auto;
+}
+.movie_rating {
+  font-family: Roboto;
+  text-align: center;
+}
+.select_form {
+  text-align: center;
+}
+.select_button {
+  background-color: #f5f0e9;
+  color: #550d08;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 4px solid #550d08;
+  font-size: large;
+  margin-bottom: 2px;
+}
+.select_icon {
+  width: 15px;
+}
+.heading {
+  margin: 1rem;
+}
+.about_title {
+  color: #550d08;
+  display: block;
+  font-family: Roboto;
+  border-bottom: 4px solid #550d08;
+}
+.back_button {
+  font-family: Roboto;
+  background-color: #550d08;
+  color: #f5f0e9;
+  padding: 6px 18px;
+  border-radius: 6px;
+  border: 0;
+}
+.about_questions {
+  margin: 5rem;
+}
+.about_header {
+  font-family: 'Winky Sans';
+  color: #550d08;
+}
+.about_answer{
+  font-family: Roboto;
+}
+@media all and (min-width: 550px) {
+  .movies {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media all and (min-width: 1200px) {
+  .movies {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  .popcorn_image {
+    display: inline;
+    max-width: 200px;
+    animation: 5s infinite alternate bounce;
+  }
+  .jumbotron{
+    flex-direction: row;
+  }
+}
+@keyframes bounce {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 30px;
+  }
+}
